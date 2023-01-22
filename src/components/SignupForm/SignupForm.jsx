@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { createUser } from 'redux/auth/operations';
-import { Form, Label } from 'components/ui/AuthForm.styled';
+//import { Form, Label } from 'components/ui/AuthForm.styled';
 
 import { Link } from 'react-router-dom';
 import {
@@ -8,8 +8,6 @@ import {
   Button,
   CssBaseline,
   TextField,
-  FormControlLabel,
-  Checkbox,
   Grid,
   Box,
   Typography,

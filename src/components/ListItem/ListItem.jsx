@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Contact, deleteContact } from 'index';
+import { deleteContact } from 'index';
 ////////////////
 import { Card, CardActions, CardContent, Button } from '@mui/material';
 
