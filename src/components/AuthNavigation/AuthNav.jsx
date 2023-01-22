@@ -1,4 +1,4 @@
-import { Link } from './AuthNav.styled';
+import { Link } from 'index';
 
 export const AuthNav = () => {
   return (

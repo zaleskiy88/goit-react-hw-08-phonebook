@@ -1,5 +1,7 @@
 import { useDispatch } from 'react-redux';
-import { loginUser } from 'redux/auth/operations';
+import { createUser } from 'redux/auth/operations';
+import { Form, Label } from 'components/ui/AuthForm.styled';
+
 import { Link } from 'react-router-dom';
 import {
   Avatar,
@@ -18,14 +20,15 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const theme = createTheme();
 
-export const LoginForm = () => {
+export const SignupForm = () => {
   const dispatch = useDispatch();
 
   const handleSubmit = e => {
     e.preventDefault();
     const form = e.currentTarget;
     dispatch(
-      loginUser({
+      createUser({
+        name: form.elements.name.value,
         email: form.elements.email.value,
         password: form.elements.password.value,
       })
@@ -49,7 +52,7 @@ export const LoginForm = () => {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Login
+            Sign Up
           </Typography>
           <Box
             component="form"
@@ -61,10 +64,18 @@ export const LoginForm = () => {
               margin="normal"
               required
               fullWidth
+              id="name"
+              label="Name"
+              name="name"
+              autoFocus
+            />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
               id="email"
               label="Email Address"
               name="email"
-              autoComplete="email"
               autoFocus
             />
             <TextField
@@ -75,23 +86,19 @@ export const LoginForm = () => {
               label="Password"
               type="password"
               id="password"
-              autoComplete="current-password"
             />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
+
             <Button
               type="submit"
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Sign In
+              Sign Up
             </Button>
             <Grid container sx={{ justifyContent: 'center' }}>
               <Grid item>
-                <Link to="/register">{"Don't have an account? Sign Up"}</Link>
+                <Link to="/login">{'Already have an account? Log In'}</Link>
               </Grid>
             </Grid>
           </Box>
@@ -101,15 +108,16 @@ export const LoginForm = () => {
   );
 };
 
-/////////////////////////////////////////////////////////
-// export const LoginForm = () => {
+///////////////////////
+// export const SignupForm = () => {
 //   const dispatch = useDispatch();
 
 //   const handleSubmit = e => {
 //     e.preventDefault();
 //     const form = e.currentTarget;
 //     dispatch(
-//       loginUser({
+//       createUser({
+//         name: form.elements.name.value,
 //         email: form.elements.email.value,
 //         password: form.elements.password.value,
 //       })
@@ -118,7 +126,11 @@ export const LoginForm = () => {
 //   };
 
 //   return (
-//     <Form onSubmit={handleSubmit} autoComplete="on">
+//     <Form onSubmit={handleSubmit} autoComplete="off">
+//       <Label>
+//         Username
+//         <input type="text" name="name" />
+//       </Label>
 //       <Label>
 //         Email
 //         <input type="email" name="email" />
@@ -127,7 +139,7 @@ export const LoginForm = () => {
 //         Password
 //         <input type="password" name="password" />
 //       </Label>
-//       <button type="submit">Log In</button>
+//       <button type="submit">Register</button>
 //     </Form>
 //   );
 // };

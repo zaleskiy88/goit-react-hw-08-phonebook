@@ -1,13 +1,14 @@
 {
-  "name": "react-homework-02-phonebook",
+  "name": "react-homework-08-phonebook",
   "version": "0.1.0",
   "private": true,
   "homepage": "https://zaleskiy88.github.io/goit-react-hw-08-phonebook",
   "dependencies": {
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
     "@fontsource/roboto": "^4.5.8",
     "@mui/icons-material": "^5.11.0",
     "@mui/material": "^5.11.5",
-    "@mui/styled-engine-sc": "^5.11.0",
     "@reduxjs/toolkit": "^1.9.1",
     "@testing-library/jest-dom": "^5.16.3",
     "@testing-library/react": "^12.1.4",

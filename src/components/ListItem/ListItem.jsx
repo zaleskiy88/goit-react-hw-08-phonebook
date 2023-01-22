@@ -1,19 +1,34 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Contact, Button, deleteContact } from 'index';
+import { Contact, deleteContact } from 'index';
 ////////////////
+import { Card, CardActions, CardContent, Button } from '@mui/material';
 
 export const ListItem = ({ name, number, id }) => {
   const dispatch = useDispatch();
 
   return (
-    <Contact>
-      {name}: {number}
-      <Button onClick={() => dispatch(deleteContact({ id, name }))}>
-        Delete
-      </Button>
-    </Contact>
+    <Card
+      sx={{
+        marginBottom: '25px',
+        display: 'flex',
+        justifyContent: 'space-between',
+      }}
+    >
+      <CardContent>
+        {name}: {number}
+      </CardContent>
+
+      <CardActions>
+        <Button
+          onClick={() => dispatch(deleteContact({ id, name }))}
+          variant="outlined"
+        >
+          Delete
+        </Button>
+      </CardActions>
+    </Card>
   );
 };
 
