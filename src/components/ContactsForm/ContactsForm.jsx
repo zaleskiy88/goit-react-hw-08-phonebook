@@ -2,16 +2,9 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { nanoid } from 'nanoid';
 import { toast } from 'react-hot-toast';
-import {
-  FormContainer,
-  Button,
-  Form,
-  Label,
-  Input,
-  selectContacts,
-  addContact,
-} from 'index';
+import { selectContacts, addContact } from 'index';
 ///////////////
+import { Container, Box, TextField, Button } from '@mui/material';
 
 export const ContactsForm = () => {
   const [state, setState] = useState({ name: '', number: '' });
@@ -59,37 +52,57 @@ export const ContactsForm = () => {
   const { name, number } = state;
 
   return (
-    <FormContainer>
-      <Form onSubmit={submitHandler}>
-        <Label htmlFor={nameInputId}>
-          Name
-          <Input
-            value={name}
-            onChange={inputHandler}
-            id={nameInputId}
-            type="text"
-            name="name"
-            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-            title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-            required
-          />
-        </Label>
-        <Label htmlFor={numberInputId}>
-          Number
-          <Input
-            id={numberInputId}
-            value={number}
-            onChange={inputHandler}
-            type="tel"
-            name="number"
-            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-            title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-            required
-          />
-        </Label>
+    <Container>
+      <Box
+        component="form"
+        onSubmit={submitHandler}
+        sx={{
+          display: 'flex',
+          justifyContent: 'space-evenly',
+          alignItems: 'baseline',
+        }}
+      >
+        <TextField
+          value={name}
+          onChange={inputHandler}
+          id={nameInputId}
+          type="text"
+          name="name"
+          label="Name"
+          variant="outlined"
+          size="small"
+          helperText="Please insert contact's name"
+          inputProps={{
+            pattern:
+              "^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$",
+            title:
+              "Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan",
+          }}
+          required
+        />
 
-        <Button type="submit">Add contact</Button>
-      </Form>
-    </FormContainer>
+        <TextField
+          value={number}
+          onChange={inputHandler}
+          id={numberInputId}
+          type="tel"
+          name="number"
+          label="Number"
+          variant="outlined"
+          size="small"
+          helperText="Please insert contact's number"
+          inputProps={{
+            pattern:
+              '+?d{1,4}?[-.s]?(?d{1,3}?)?[-.s]?d{1,4}[-.s]?d{1,4}[-.s]?d{1,9}',
+            title:
+              'Phone number must be digits and can contain spaces, dashes, parentheses and can start with +',
+          }}
+          required
+        />
+        <Button type="submit" variant="contained">
+          Add contact
+        </Button>
+      </Box>
+    </Container>
   );
 };

@@ -1,7 +1,6 @@
 import { Navigation, AuthNav, UserMenu, selectAuth } from 'index';
 import { useSelector } from 'react-redux';
 import { Header } from './AppBar.styled';
-
 /////
 
 export const AppBar = () => {

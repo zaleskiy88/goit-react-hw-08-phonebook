@@ -5,11 +5,12 @@ import {
   ContactsForm,
   ContactsList,
   ContactsFilter,
-  AppContainer,
   selectContacts,
   fetchAllContacts,
   selectIsLoading,
 } from 'index';
+/////////////
+import { Typography, Box } from '@mui/material';
 
 export const Phonebook = () => {
   const isLoading = useSelector(selectIsLoading);
@@ -22,44 +23,69 @@ export const Phonebook = () => {
 
   return (
     <>
-      <AppContainer>
-        <h2>Phonebook</h2>
+      <div>
+        <Typography
+          variant="h2"
+          align="center"
+          gutterBottom
+          sx={{
+            fontWeight: '400',
+            marginBottom: '50px',
+          }}
+        >
+          Phonebook
+        </Typography>
         <ContactsForm />
 
-        <h2>Contacts</h2>
+        <Typography
+          variant="h2"
+          align="center"
+          gutterBottom
+          sx={{
+            fontWeight: '400',
+            marginTop: '50px',
+          }}
+        >
+          Contacts{' '}
+        </Typography>
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}
+        >
+          {isLoading && (
+            <ThreeDots
+              height="150"
+              width="300"
+              radius="9"
+              color="#1976d2"
+              ariaLabel="three-dots-loading"
+              visible={true}
+            />
+          )}
 
-        {isLoading && (
-          <ThreeDots
-            height="150"
-            width="300"
-            radius="9"
-            color="#000000"
-            ariaLabel="three-dots-loading"
-            visible={true}
-          />
-        )}
+          {contacts.length > 1 && isLoading === false && (
+            <>
+              <ContactsFilter />
+            </>
+          )}
 
-        {contacts.length > 1 && isLoading === false && (
-          <>
-            <ContactsFilter />
-          </>
-        )}
+          {contacts.length > 0 && isLoading === false && (
+            <>
+              <ContactsList />
+            </>
+          )}
 
-        {contacts.length > 0 && isLoading === false && (
-          <>
-            <ContactsList />
-          </>
-        )}
-
-        {contacts.length === 0 && isLoading === false && (
-          <p>
-            Phonebook is empty (: <br />
-            Please add some contacts
-          </p>
-        )}
-
-        {/* <Toaster /> */}
-      </AppContainer>
+          {contacts.length === 0 && isLoading === false && (
+            <Typography variant="subtitle1">
+              Phonebook is empty (: <br />
+              Please add some contacts
+            </Typography>
+          )}
+        </Box>
+      </div>
     </>
   );
 };

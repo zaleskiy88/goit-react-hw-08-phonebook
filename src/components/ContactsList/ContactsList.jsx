@@ -19,7 +19,7 @@ export const ContactsList = () => {
 
   return (
     <>
-      <List>
+      <List style={{ width: '-webkit-fill-available' }}>
         {filteredContacts.map(({ name, number, id }) => {
           return <ListItem name={name} number={number} id={id} key={id} />;
         })}

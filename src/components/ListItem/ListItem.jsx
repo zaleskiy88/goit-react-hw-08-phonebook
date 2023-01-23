@@ -1,12 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { deleteContact } from 'index';
 ////////////////
-import { Card, CardActions, CardContent, Button } from '@mui/material';
+import {
+  Card,
+  CardActions,
+  CardContent,
+  Button,
+  Typography,
+} from '@mui/material';
 
 export const ListItem = ({ name, number, id }) => {
   const dispatch = useDispatch();
+  const [isUpdating, setIsUpdating] = useState(false);
 
   return (
     <Card
@@ -17,7 +24,25 @@ export const ListItem = ({ name, number, id }) => {
       }}
     >
       <CardContent>
-        {name}: {number}
+        <Typography
+          variant="subtitle1"
+          sx={{ color: '#857474', textDecoration: 'underline' }}
+        >
+          Name:
+        </Typography>
+
+        <Typography variant="h6" sx={{ fontSize: '22px' }} gutterBottom>
+          {name}
+        </Typography>
+        <Typography
+          variant="subtitle1"
+          sx={{ color: '#857474', textDecoration: 'underline' }}
+        >
+          Number:
+        </Typography>
+        <Typography variant="h6" sx={{ fontSize: '22px' }}>
+          {number}
+        </Typography>
       </CardContent>
 
       <CardActions>
@@ -26,6 +51,15 @@ export const ListItem = ({ name, number, id }) => {
           variant="outlined"
         >
           Delete
+        </Button>
+        <Button
+          variant="outlined"
+          onClick={() => {
+            setIsUpdating(true);
+            console.log(isUpdating);
+          }}
+        >
+          Modify
         </Button>
       </CardActions>
     </Card>
