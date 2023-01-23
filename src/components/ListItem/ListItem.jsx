@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { deleteContact } from 'index';
-////////////////
 import {
   Card,
   CardActions,
@@ -10,6 +9,7 @@ import {
   Button,
   Typography,
 } from '@mui/material';
+////////////////
 
 export const ListItem = ({ name, number, id }) => {
   const dispatch = useDispatch();

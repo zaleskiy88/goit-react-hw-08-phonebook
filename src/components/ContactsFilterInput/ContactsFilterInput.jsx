@@ -2,7 +2,6 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { nanoid } from 'nanoid';
 import { filterContacts } from 'index';
-////////////////////
 import { TextField } from '@mui/material';
 
 export const ContactsFilter = () => {

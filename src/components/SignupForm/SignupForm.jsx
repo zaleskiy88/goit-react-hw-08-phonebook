@@ -1,7 +1,5 @@
 import { useDispatch } from 'react-redux';
 import { createUser } from 'redux/auth/operations';
-//import { Form, Label } from 'components/ui/AuthForm.styled';
-
 import { Link } from 'react-router-dom';
 import {
   Avatar,
@@ -15,6 +13,7 @@ import {
 } from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+///////////////////////
 
 const theme = createTheme();
 

@@ -15,6 +15,7 @@ import {
 } from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+////////////////
 
 const theme = createTheme();
 
@@ -100,34 +101,3 @@ export const LoginForm = () => {
     </ThemeProvider>
   );
 };
-
-/////////////////////////////////////////////////////////
-// export const LoginForm = () => {
-//   const dispatch = useDispatch();
-
-//   const handleSubmit = e => {
-//     e.preventDefault();
-//     const form = e.currentTarget;
-//     dispatch(
-//       loginUser({
-//         email: form.elements.email.value,
-//         password: form.elements.password.value,
-//       })
-//     );
-//     form.reset();
-//   };
-
-//   return (
-//     <Form onSubmit={handleSubmit} autoComplete="on">
-//       <Label>
-//         Email
-//         <input type="email" name="email" />
-//       </Label>
-//       <Label>
-//         Password
-//         <input type="password" name="password" />
-//       </Label>
-//       <button type="submit">Log In</button>
-//     </Form>
-//   );
-// };

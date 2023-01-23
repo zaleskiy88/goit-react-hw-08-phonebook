@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { nanoid } from 'nanoid';
 import { toast } from 'react-hot-toast';
 import { selectContacts, addContact } from 'index';
-///////////////
 import { Container, Box, TextField, Button } from '@mui/material';
 
 export const ContactsForm = () => {
