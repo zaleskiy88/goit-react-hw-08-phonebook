@@ -20,11 +20,15 @@ export const contactsSlice = createSlice({
   name: 'contacts',
   initialState: { items: [], isLoading: false, error: null },
   extraReducers: {
-    [fetchAllContacts.pending]: handlePending,
-    [fetchAllContacts.rejected]: handleRejected,
-    [addContact.pending]: handlePending,
-    [addContact.rejected]: handleRejected,
+    ////////////PENDING
     [deleteContact.pending]: handlePending,
+    [fetchAllContacts.pending]: handlePending,
+    [addContact.pending]: handlePending,
+    [updateContact.pending]: handlePending,
+    ///////////////REJECTED
+    [addContact.rejected]: handleRejected,
+    [fetchAllContacts.rejected]: handleRejected,
+    [updateContact.rejected]: handleRejected,
     [deleteContact.rejected]: handleRejected,
     //////// FETCH ALL CONTACTS
     [fetchAllContacts.fulfilled](state, action) {
@@ -59,6 +63,7 @@ export const contactsSlice = createSlice({
           contact.name = action.payload.name;
           contact.number = action.payload.number;
         }
+        return true;
       });
     },
   },
