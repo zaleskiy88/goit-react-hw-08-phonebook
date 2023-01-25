@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { Routes, Route } from 'react-router';
 import { useSelector, useDispatch } from 'react-redux';
+import { Toaster } from 'react-hot-toast';
 import {
   SharedLayout,
   Home,
@@ -50,6 +51,7 @@ export const App = () => {
           </Route>
         </Routes>
       )}
+      <Toaster />
     </>
   );
 };
