@@ -1,8 +1,12 @@
 import { Typography } from '@mui/material';
+import { useSelector } from 'react-redux';
+import { selectAuth } from 'redux/selectors';
 import { Link } from 'react-router-dom';
 import phonebookIcon from '../components/ui/phonebookIcon.jpg';
 
 export const Home = () => {
+  const authState = useSelector(selectAuth);
+
   return (
     <div
       style={{
@@ -23,10 +27,15 @@ export const Home = () => {
         style={{ height: '100px', width: '100px', marginBottom: '100px' }}
       />
 
-      <Typography variant="body2" sx={{ fontSize: '20px', fontWeight: '100' }}>
-        Please <Link to="/login"> Login</Link> or{' '}
-        <Link to="/register">Sign Up</Link>
-      </Typography>
+      {!authState.isLoggedIn && (
+        <Typography
+          variant="body2"
+          sx={{ fontSize: '20px', fontWeight: '100' }}
+        >
+          Please <Link to="/login"> Login</Link> or{' '}
+          <Link to="/register">Sign Up</Link>
+        </Typography>
+      )}
     </div>
   );
 };
