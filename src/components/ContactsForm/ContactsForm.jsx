@@ -1,10 +1,10 @@
-/* eslint-disable no-useless-escape */
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { nanoid } from 'nanoid';
 import { toast } from 'react-hot-toast';
 import { selectContacts, addContact } from 'index';
 import { Container, Box, TextField, Button } from '@mui/material';
+///////////////////////////////////////////////////////////////////
 
 export const ContactsForm = () => {
   const [state, setState] = useState({ name: '', number: '' });
@@ -83,18 +83,20 @@ export const ContactsForm = () => {
         />
 
         <TextField
-          value={number}
-          onChange={inputHandler}
-          id={numberInputId}
-          type="tel"
           name="number"
           label="Number"
+          type="tel"
           variant="outlined"
           size="small"
+          id={numberInputId}
+          value={number}
+          onChange={inputHandler}
           helperText="Please insert contact's number"
           inputProps={{
-            pattern: `\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9} 
+            pattern: `\\+?\\d{1,4}?[-.\\s]?\\(?\\d{1,3}?\\)?[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,9} 
               `,
+            title:
+              'Phone number must be digits and can contain spaces, dashes, parentheses and can start with +',
           }}
           required
         />
@@ -105,5 +107,3 @@ export const ContactsForm = () => {
     </Container>
   );
 };
-
-// title: 'Phone number must be digits and can contain spaces, dashes, parentheses and can start with +',

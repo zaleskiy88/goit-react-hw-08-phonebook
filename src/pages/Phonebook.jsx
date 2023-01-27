@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { ThreeDots } from 'react-loader-spinner';
+import { Typography, Box } from '@mui/material';
 import {
   ContactsForm,
   ContactsList,
@@ -9,8 +10,7 @@ import {
   fetchAllContacts,
   selectIsLoading,
 } from 'index';
-/////////////
-import { Typography, Box } from '@mui/material';
+///////////////
 
 export const Phonebook = () => {
   const isLoading = useSelector(selectIsLoading);

@@ -20,7 +20,6 @@ export const contactsSlice = createSlice({
   name: 'contacts',
   initialState: { items: [], isLoading: false, error: null },
   extraReducers: {
-    ////////////PENDING
     [deleteContact.pending]: handlePending,
     [fetchAllContacts.pending]: handlePending,
     [addContact.pending]: handlePending,

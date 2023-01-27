@@ -3,10 +3,12 @@ import { useDispatch } from 'react-redux';
 import { nanoid } from 'nanoid';
 import { filterContacts } from 'index';
 import { TextField } from '@mui/material';
+//////////////////////////////////////////
 
 export const ContactsFilter = () => {
   const dispatch = useDispatch();
   const filterId = nanoid();
+
   return (
     <TextField
       type="text"

@@ -1,10 +1,10 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { selectAuth } from 'redux/selectors';
 import { logOutUser } from 'index';
-///
 import { Box } from '@mui/system';
 import { Button } from '@mui/material';
 import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
+//////////////////////////////////////////////////////////////////
 
 export const UserMenu = () => {
   const state = useSelector(selectAuth);

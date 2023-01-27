@@ -3,7 +3,7 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
-
+////////////////////////////////////
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
@@ -12,7 +12,7 @@ import { store } from 'redux/store';
 import { PersistGate } from 'redux-persist/integration/react';
 import { persistor } from 'redux/store';
 import { App } from 'components/App';
-
+/////////////////////////////////////
 export * from 'redux/filter/filterSlice';
 export * from 'redux/contacts/contactsSlice';
 export * from 'redux/selectors';
@@ -41,15 +41,16 @@ export * from 'pages/Login';
 export * from 'pages/Signup';
 export * from 'pages/Phonebook';
 export * from 'utils/capitalizeFirstLowercaseRest';
+///////////////////////////////////////////////////
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  //<React.StrictMode>
-  <Provider store={store}>
-    <PersistGate persistor={persistor}>
-      <BrowserRouter basename="/goit-react-hw-08-phonebook">
-        <App />
-      </BrowserRouter>
-    </PersistGate>
-  </Provider>
-  //</React.StrictMode>
+  <React.StrictMode>
+    <Provider store={store}>
+      <PersistGate persistor={persistor}>
+        <BrowserRouter basename="/goit-react-hw-08-phonebook">
+          <App />
+        </BrowserRouter>
+      </PersistGate>
+    </Provider>
+  </React.StrictMode>
 );
