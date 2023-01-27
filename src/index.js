@@ -40,6 +40,7 @@ export * from 'pages/Home';
 export * from 'pages/Login';
 export * from 'pages/Signup';
 export * from 'pages/Phonebook';
+export * from 'pages/ErrorPage';
 export * from 'utils/capitalizeFirstLowercaseRest';
 ///////////////////////////////////////////////////
 

@@ -8,6 +8,7 @@ import {
   Login,
   Signup,
   Phonebook,
+  ErrorPage,
   selectAuth,
   refreshUser,
   RestrictedRoute,
@@ -47,6 +48,7 @@ export const App = () => {
                 <RestrictedRoute component={Signup} redirectTo="/contacts" />
               }
             />
+            <Route path="*" element={<ErrorPage />} />
           </Route>
         </Routes>
       )}
