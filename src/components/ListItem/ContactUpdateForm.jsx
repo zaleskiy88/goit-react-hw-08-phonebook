@@ -29,6 +29,15 @@ export const ContactUpdateForm = ({ name, number, id, setIsUpdating }) => {
       contact.name.toLowerCase()
     );
 
+    if (
+      !normalizedNamesArr.includes(normalizedNameValue) &&
+      (modifiedNumber !== number || modifiedName !== name)
+    ) {
+      dispatch(updateContact({ modifiedName, modifiedNumber, id }));
+      toast.success('Contact updated!');
+      return true;
+    }
+
     if (modifiedName === name && modifiedNumber === number) {
       setIsUpdating(false);
       return false;
@@ -37,12 +46,6 @@ export const ContactUpdateForm = ({ name, number, id, setIsUpdating }) => {
     if (normalizedNamesArr.includes(normalizedNameValue)) {
       toast.error(`${modifiedName} is already in the list`);
       return;
-    }
-
-    if (!normalizedNamesArr.includes(normalizedNameValue)) {
-      dispatch(updateContact({ modifiedName, modifiedNumber, id }));
-      toast.success('Contact updated!');
-      return true;
     }
   };
 
@@ -88,8 +91,8 @@ export const ContactUpdateForm = ({ name, number, id, setIsUpdating }) => {
           onChange={inputHandler}
           sx={{ backgroundColor: '#ecdddd' }}
           inputProps={{
-            pattern: `\\+?\\d{1,4}?[-.\\s]?\\(?\\d{1,3}?\\)?[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,9} 
-              `,
+            pattern:
+              '\\+?\\d{1,4}?[-.\\s]?\\(?\\d{1,3}?\\)?[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,9}',
             title:
               'Phone number must be digits and can contain spaces, dashes, parentheses and can start with +',
           }}
