@@ -34,7 +34,7 @@ export const ContactInfo = ({ name, number, id, setIsUpdating }) => {
       <CardActions>
         <Button
           onClick={() => dispatch(deleteContact({ id, name }))}
-          variant="outlined"
+          variant="contained"
         >
           Delete
         </Button>
