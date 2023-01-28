@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 
 export const ContactInfo = ({ name, number, id, setIsUpdating }) => {
   const dispatch = useDispatch();
+
   return (
     <>
       <CardContent>

@@ -11,7 +11,6 @@ export const ContactUpdateForm = ({ name, number, id, setIsUpdating }) => {
     modifiedName: name,
     modifiedNumber: number,
   });
-
   const dispatch = useDispatch();
   const contacts = useSelector(selectContacts);
 
@@ -23,6 +22,14 @@ export const ContactUpdateForm = ({ name, number, id, setIsUpdating }) => {
     });
   };
 
+  const cancelButtonHandler = () => {
+    setIsUpdating(false);
+    setFormValues({
+      modifiedName: name,
+      modifiedNumber: number,
+    });
+  };
+
   const formSubmitHandler = ({ modifiedName, modifiedNumber }) => {
     const normalizedNameValue = modifiedName.toLowerCase();
     const normalizedNamesArr = contacts.map(contact =>
@@ -30,8 +37,8 @@ export const ContactUpdateForm = ({ name, number, id, setIsUpdating }) => {
     );
 
     if (
-      !normalizedNamesArr.includes(normalizedNameValue) &&
-      (modifiedNumber !== number || modifiedName !== name)
+      !normalizedNamesArr.includes(normalizedNameValue) ||
+      (modifiedName === name && modifiedNumber !== number)
     ) {
       dispatch(updateContact({ modifiedName, modifiedNumber, id }));
       toast.success('Contact updated!');
@@ -106,11 +113,7 @@ export const ContactUpdateForm = ({ name, number, id, setIsUpdating }) => {
         >
           <Button
             onClick={() => {
-              setIsUpdating(false);
-              setFormValues({
-                modifiedName: name,
-                modifiedNumber: number,
-              });
+              cancelButtonHandler();
             }}
             variant="outlined"
           >
